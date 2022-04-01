@@ -42,6 +42,9 @@ gem 'cancancan'
 #Money to deal with currencies
 gem 'money-rails', '~>1.12'
 
+#For active storage with s3
+gem 'aws-sdk-s3'
+
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 
