@@ -1,2 +1,9 @@
-<h1>My assesments</h1>
 <h1>Create an new assesment</h1>
+<%= turbo_stream_from "assessments" %>
+<%= turbo_frame_tag "assessment_form" do %>
+  <%= render "assessments/shared/form", assessment: @assessment %>
+<% end %>
+<h1>My assesments</h1>
+<%= turbo_frame_tag "assessments" do %>
+  <%= render @assessments %>
+<% end %>

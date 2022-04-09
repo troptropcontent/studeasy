@@ -1,0 +1,18 @@
+<%= form_with model: assessment, id: dom_id(assessment) do |form| %>
+  <% if assessment.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% assessment.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :deadline %>
+  <%= form.date_field :deadline %>
+   <%= form.label :documents %>
+  <%= form.file_field :documents, :multiple => true %>
+  <%= form.submit %>
+<% end %>
