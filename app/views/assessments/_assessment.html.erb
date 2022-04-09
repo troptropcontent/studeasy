@@ -3,4 +3,5 @@
     <div><%= assessment.name %></div>
     <div><%= assessment.deadline %></div>
   </div>
+  <%= button_to "delete", assessment_path(assessment), method: :delete %>
 <% end %>

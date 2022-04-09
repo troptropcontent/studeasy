@@ -31,7 +31,7 @@ class Ability
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
 
-    can [:read, :create], Assessment, user: user
+    can [:read, :create, :destroy], Assessment, user: user
 
   end
 end

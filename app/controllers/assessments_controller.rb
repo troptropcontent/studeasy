@@ -18,6 +18,14 @@ class AssessmentsController < ApplicationController
         end
     end
 
+    # DELETE /tweets/:id
+    def destroy
+        @assessment.destroy
+        respond_to do |format|
+            format.turbo_stream { render turbo_stream: turbo_stream.remove(@assessment) }
+        end
+    end
+
     private
 
     def assessment_params
