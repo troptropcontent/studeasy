@@ -1,0 +1,4 @@
+ <%= turbo_stream.replace "new_assessment" do %>
+   <%= render partial: "assessments/shared/form",  locals: {assessment: @new_assessment} %>
+ <% end %>
+ <%= turbo_stream.prepend "assessments", @assessment %>
