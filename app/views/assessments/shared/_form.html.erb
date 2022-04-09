@@ -14,5 +14,9 @@
   <%= form.date_field :deadline %>
    <%= form.label :documents %>
   <%= form.file_field :documents, :multiple => true %>
+  <div class="trix-area" data-controller="trix-area">
+    <%= form.label :description %>
+    <%= form.rich_text_area :description %>
+  </div>
   <%= form.submit %>
 <% end %>

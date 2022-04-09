@@ -1,6 +1,7 @@
 class Assessment < ApplicationRecord
   belongs_to :user
   has_many_attached :documents
+  has_rich_text :description
 
   validates :deadline, presence: true
   validates :name, presence: true
