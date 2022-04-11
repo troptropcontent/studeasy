@@ -1,0 +1,6 @@
+
+<%= turbo_stream.remove(@assessment) %>
+
+<% if @assessments_count.zero? %>
+  <%= turbo_stream.prepend "assessments", partial: "assessments/no_assessment" %>
+<% end %>
