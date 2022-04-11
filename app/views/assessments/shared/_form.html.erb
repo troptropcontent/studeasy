@@ -1,6 +1,7 @@
 <%= form_with model: assessment, id: dom_id(assessment) do |form| %>
+  <div class="form-row ">
   <% if assessment.errors.any? %>
-    <div id="error_explanation">
+    <div class="form-output" id="error_explanation">
       <ul>
         <% assessment.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -8,15 +9,30 @@
       </ul>
     </div>
   <% end %>
-  <%= form.label :name %>
-  <%= form.text_field :name %>
-  <%= form.label :deadline %>
-  <%= form.date_field :deadline %>
-   <%= form.label :documents %>
-  <%= form.file_field :documents, :multiple => true %>
-  <div class="trix-area" data-controller="trix-area">
-    <%= form.label :description %>
-    <%= form.rich_text_area :description %>
   </div>
-  <%= form.submit %>
+  <div class="form-row flex justify-between my-2 p-2">
+    <div class="form-input flex flex-col">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+    <div class="form-input flex flex-col mx-2">
+      <%= form.label :deadline %>
+      <%= form.date_field :deadline %>
+    </div>
+    <div class="form-input flex flex-col">
+      <%= form.label :documents %>
+      <%= form.file_field :documents, :multiple => true %>
+    </div>
+  </div>
+  <div class="form-row my-2 p-2">
+    <div class="form-input trix-area" data-controller="trix-area">
+      <%= form.label :description %>
+      <%= form.rich_text_area :description %>
+    </div>
+  </div>
+  <div class="form-row flex flex-row-reverse p-2">
+    <div class="form-input">
+      <%= form.submit  class: "bg-sky-600 text-white p-2 rounded-md" %>
+    </div>
+  </div>  
 <% end %>
