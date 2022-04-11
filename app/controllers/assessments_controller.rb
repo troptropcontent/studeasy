@@ -21,15 +21,18 @@ class AssessmentsController < ApplicationController
     # DELETE /tweets/:id
     def destroy
         @assessment.destroy
+        
+        @assessments_count = current_user.assessments.count
+
         respond_to do |format|
-            format.turbo_stream { render turbo_stream: turbo_stream.remove(@assessment) }
+            format.turbo_stream
         end
     end
 
     private
 
     def assessment_params
-        params.require(:assessment).permit(:name, :deadline, documents: [])
+        params.require(:assessment).permit(:name, :deadline, :description, documents: [])
     end
 
 end
