@@ -2,11 +2,12 @@ class AssessmentsController < ApplicationController
     before_action :authenticate_user!
     load_and_authorize_resource
 
+    # GET /assessments
     def index
         @assessment = Assessment.new
     end
 
-    # POST /tweets
+    # POST /assessments
     def create
         respond_to do |format|
             if @assessment.save
