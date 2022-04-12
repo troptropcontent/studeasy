@@ -20,8 +20,7 @@
       <%= form.date_field :deadline %>
     </div>
     <div class="form-input flex flex-col">
-      <%= form.label :documents %>
-      <%= form.file_field :documents, :multiple => true %>
+      <%= render partial: "assessments/shared/file_input", locals: {form: form} %>
     </div>
   </div>
   <div class="form-row my-2 p-2">
@@ -34,5 +33,5 @@
     <div class="form-input">
       <%= form.submit  class: "bg-sky-600 text-white p-2 rounded-md" %>
     </div>
-  </div>  
+  </div>
 <% end %>

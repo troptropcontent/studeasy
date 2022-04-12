@@ -2,6 +2,9 @@
   <div class="card card-body">
     <div><%= assessment.name %></div>
     <div><%= assessment.deadline %></div>
+    <% assessment.documents.each do |document| %>
+      <%= link_to "document", rails_blob_path(document, disposition: "attachment") %>
+    <% end %>
   </div>
   <%= button_to "delete", assessment_path(assessment), method: :delete %>
 <% end %>

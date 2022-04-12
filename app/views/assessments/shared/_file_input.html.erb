@@ -1,0 +1,8 @@
+
+<div data-controller="file-input">
+  <%= form.label :documents, class: "cursor-pointer" do %>
+      <p>Documents</p>
+      <%= form.file_field :documents, :multiple => true, class: "hidden", data: {action: "input->file-input#handleFileInput"} %>
+  <% end %>
+  <%= form.text_field :file_names, data:{"file-input-target"=>"files"} %>
+</div>
