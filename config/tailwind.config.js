@@ -11,6 +11,9 @@ module.exports = {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
+      flex: {
+        '2': '2 2 0%',
+      },
     },
   },
   plugins: [

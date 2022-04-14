@@ -67,6 +67,8 @@ Layout/HashAlignment:
 
 Layout/LineLength:
   Max: 120
+  Exclude:
+    - 'config/initializers/devise.rb'
 
 Lint/InterpolationCheck:
   Exclude:
@@ -83,6 +85,7 @@ Metrics/BlockLength:
     - '**/*.rake'
     - 'spec/**/*.rb'
     - '**/*.gemspec'
+    - 'db/schema.rb'
 
 Metrics/ClassLength:
   Exclude:
@@ -129,3 +132,7 @@ Performance/StartWith:
 
 RSpec/StubbedMock:
   Enabled: false
+
+Style/Documentation:
+  Exclude:
+    - 'db/**/*.rb'

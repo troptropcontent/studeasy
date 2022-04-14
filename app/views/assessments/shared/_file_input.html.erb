@@ -1,8 +1,11 @@
 
 <div data-controller="file-input">
   <%= form.label :documents, class: "cursor-pointer" do %>
-      <p>Documents</p>
+      <div class="flex justify-between">
+        <p>Documents</p>
+        <%= inline_svg_tag "upload.svg" %>
+      </div>
       <%= form.file_field :documents, :multiple => true, class: "hidden", data: {action: "input->file-input#handleFileInput"} %>
   <% end %>
-  <%= form.text_field :file_names, data:{"file-input-target"=>"files"} %>
+  <%= form.text_field :file_names, data:{"file-input-target"=>"files"}, disabled: true, class: "disabled:bg-slate-100" %>
 </div>
