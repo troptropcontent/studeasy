@@ -3,8 +3,9 @@ repos:
     rev: v2.3.0
     hooks:
     -   id: check-yaml
-        exclude: spec/support|.rubocop_todo.yml
+        exclude: spec/support|.rubocop_todo.yml|config/credentials.yml.enc
     -   id: end-of-file-fixer
+        exclude: config/credentials.yml.enc
     -   id: trailing-whitespace
 - repo: local
   hooks:

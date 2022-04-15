@@ -41,8 +41,8 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
     port:                 587,
-    user_name:            Rails.application.credentials.dig(:gmail, :username),
-    password:             Rails.application.credentials.dig(:gmail, :password),
+    user_name:            Rails.application.credentials.dig(:gmail, :development, :username),
+    password:             Rails.application.credentials.dig(:gmail, :development, :password),
     authentication:       'plain',
     enable_starttls_auto: true,
     open_timeout:         5,
@@ -50,7 +50,8 @@ Rails.application.configure do
   }
   config.action_mailer.perform_deliveries = true
 
-  config.action_mailer.default_options = { from: 'no-reply@example.com' }
+  config.action_mailer.default_options = { from: 'assessmentcopilot+development@gmail.com',
+    reply_to: 'assessmentcopilot+development@gmail.com' }
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
