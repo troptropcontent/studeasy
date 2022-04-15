@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>A new assessment have been uploaded</h1>
+    <p><b>Username : </b> <%= @assessment.user.email %></p>
+    <p><b>Name : </b> <%= @assessment.name %></p>
+    <p><b>Deadline : </b> <%= @assessment.deadline %></p>
+    <p><b>Description : </b></p>
+    <%= @assessment.description %>
+  </body>
+</html>
