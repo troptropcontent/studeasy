@@ -14,6 +14,7 @@ AllCops:
     - 'tmp/**/*'
     - '.git/**/*'
     - 'bin/*'
+    - 'config/environments/**'
   TargetRubyVersion: 2.5
   SuggestExtensions: false
 
