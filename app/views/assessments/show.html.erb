@@ -1,0 +1,39 @@
+<div class="flex flex-col">
+  <section class="bg-white p-4 mb-2 rounded-md flex flex-col">
+    <div class="flex justify-between mb-2">
+      <div>
+        <p><b>Assessment's name</b></p>
+        <p><%= @assessment.name %></p>
+      </div>
+      <div>
+        <p><b>Deadline</b></p>
+        <p><%= @assessment.deadline %></p>
+      </div>
+    </div>
+    <div class="flex justify-between mb-2">
+      <div>
+        <p class="mb-2"><b>Documents</b></p>
+        <% @assessment.documents.each do |document| %>
+          <%= link_to rails_blob_path(document, disposition: "attachment"), class: "m-auto flex" do %>
+            <%= inline_svg_tag "file-text.svg", class: "my-auto w-4 h-4" %>
+            <%= document.filename %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="flex justify-between">
+      <div>
+        <p class="mb-2"><b>Special instructions</b></p>
+        <%= @assessment.description %>
+      </div>
+    </div>
+  </section>
+  <% if @admin_view %>
+    <section class="bg-white p-4 mb-2 rounded-md flex flex-col">
+      <div class="flex flex-row-reverse">
+        <p>* this is an admin view, only admin user can see this</p>
+      </div>
+      <%= render partial: "quotes/quote", locals: {assessment: @assessment} %>
+    </section>
+  <% end %>
+</div>

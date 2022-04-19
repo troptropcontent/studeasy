@@ -24,4 +24,8 @@ class Assessment < ApplicationRecord
 
     'quoted'
   end
+
+  def quote
+    super || Quote.create!(assessment: self, price: 0)
+  end
 end

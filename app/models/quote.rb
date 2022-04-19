@@ -5,4 +5,9 @@ class Quote < ApplicationRecord
   belongs_to :assessment
   belongs_to :service_provider, optional: true
   monetize :price_cents
+  enum status: { not_started: 0, ready: 1, paid: 2 }
+
+  def to_partial_path
+    "#{super}_#{status}"
+  end
 end

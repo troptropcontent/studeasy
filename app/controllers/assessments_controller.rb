@@ -10,6 +10,11 @@ class AssessmentsController < ApplicationController
     @assessment = Assessment.new
   end
 
+  # GET /assessments/:id
+  def show
+    @admin_view = current_user.admin?
+  end
+
   # POST /assessments
   def create
     respond_to do |format|
