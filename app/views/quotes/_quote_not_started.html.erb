@@ -1,3 +1,5 @@
-# frozen_string_literal: true
-
-HELLO FROM THE QUOTE NOT STARTED PARTIAL
+<%= form_with model: @quote, url: assessment_quote_path(@assessment), method: "put" do |form| %>
+  <%= form.label :price %>
+  <%= form.number_field :price %>
+  <%= form.submit %>
+<% end %>

@@ -4,7 +4,7 @@
 class Assessment < ApplicationRecord
   belongs_to :user
   has_many_attached :documents
-  has_one :quote
+  has_one :quote, dependent: :destroy
   has_rich_text :description
 
   validates :deadline, presence: true
@@ -19,8 +19,8 @@ class Assessment < ApplicationRecord
                         size: { between: (1.kilobyte)..(100.megabytes) }
 
   def status
-    return 'waiting for quotation' unless quote
-    return 'assigned' if service_provider
+    return 'waiting for quotation' unless quote.status == 'ready'
+    return 'assigned' if quote.service_provider
 
     'quoted'
   end

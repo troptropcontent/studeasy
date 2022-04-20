@@ -8,10 +8,13 @@ class AssessmentsController < ApplicationController
   # GET /assessments
   def index
     @assessment = Assessment.new
+
+    render "assessments/#{current_user.role}_index"
   end
 
   # GET /assessments/:id
   def show
+    @quote = @assessment.quote
     @admin_view = current_user.admin?
   end
 
@@ -31,7 +34,7 @@ class AssessmentsController < ApplicationController
     @assessment.destroy
 
     @assessments_count = current_user.assessments.count
-
+    puts @assessments_count
     respond_to do |format|
       format.turbo_stream
     end
