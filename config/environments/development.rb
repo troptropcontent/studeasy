@@ -31,6 +31,9 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+  #setup ngrok
+  config.hosts << "117c-109-0-205-154.eu.ngrok.io"
+
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :amazon
 

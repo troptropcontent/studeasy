@@ -8,10 +8,14 @@
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat&display=swap" rel="stylesheet">
     <%= javascript_importmap_tags %>
   </head>
 
   <body class="bg-sky-50">
+    <%= render 'layouts/shared/navbar' %>
     <main class="container mx-auto mt-28 px-5">
       <%= yield %>
     </main>
