@@ -1,28 +1,4 @@
-<div class="flex flex-col">
-  <section class="bg-white p-4 mb-2 rounded-md">
-    <h1 class="font-bold p-2 border-solid border-b-2 border-sky-600" >My assesments</h1>
-    <div class="grid grid-cols-7 my-2 px-2">
-      <p>Name</p>
-      <p>Deadline</p>
-      <p>Documents</p>
-      <p>Price</p>
-      <p>Status</p>
-      <p>Work</p>
-      <p>Action</p>
-    </div>
-    <%= turbo_frame_tag "assessments" do %>
-      <% unless @assessments.empty? %>
-        <%= render @assessments %>
-      <% else %>
-        <%= render "assessments/no_assessment" %>
-      <% end %>
-    <% end %>
-  </section>
-  <section class="bg-white p-4 mb-2 rounded-md">
-    <h1 class="font-bold p-2 border-solid border-b-2 border-sky-600">Create an new assesment</h1>
-    <%= turbo_stream_from "assessments" %>
-    <%= turbo_frame_tag "assessment_form" do %>
-      <%= render "assessments/shared/form", assessment: @assessment %>
-    <% end %>
-  </section>
-</div>
+<%= turbo_stream_from "assessments" %>
+<%= turbo_frame_tag "assessments_tabs", class: "flex-auto flex flex-col" do %>
+  <%= render "assessments/student_index_#{@tab}" %>
+<% end %>

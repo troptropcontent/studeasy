@@ -1,37 +1,37 @@
-<%= form_with model: assessment, id: dom_id(assessment) do |form| %>
-  <div class="form-row ">
+<%= form_with model: assessment, id: dom_id(assessment), class: "flex flex-col justify-between w-full" do |form| %>
   <% if assessment.errors.any? %>
-    <div class="form-output" id="error_explanation">
-      <ul>
-        <% assessment.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+    <div class="form-row my-2 p-2">
+      <div class="form-output" id="error_explanation">
+        <ul>
+          <% assessment.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
+  <div class="form-input flex flex-col p-2">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
   </div>
-  <div class="form-row flex justify-between my-2 py-2">
-    <div class="form-input flex flex-col">
-      <%= form.label :name %>
-      <%= form.text_field :name %>
-    </div>
-    <div class="form-input flex flex-col mx-2">
-      <%= form.label :deadline %>
-      <%= form.date_field :deadline %>
-    </div>
-    <div class="form-input flex flex-col">
+  <div class="form-input flex flex-col  p-2">
+    <%= form.label :deadline %>
+    <%= form.date_field :deadline %>
+  </div>
+  <div class="form-row flex p-2">
+      <div class="form-input flex flex-col w-full">
       <%= render partial: "assessments/shared/file_input", locals: {form: form} %>
     </div>
   </div>
-  <div class="form-row my-2 p-2">
-    <div class="form-input trix-area" data-controller="trix-area">
+  <div class="form-row flex-auto p-2">
+    <div class="form-input trix-area h-full" data-controller="trix-area">
       <%= form.label :description %>
-      <%= form.rich_text_area :description %>
+      <%= form.rich_text_area :description , class: "h-[calc(100%-theme(space.14))]" %>
     </div>
   </div>
   <div class="form-row flex flex-row-reverse p-2">
     <div class="form-input">
-      <%= form.submit  class: "bg-sky-600 text-white p-2 rounded-md" %>
+      <%= form.submit  class: "bg-slate-300 text-white p-2 rounded-md" %>
     </div>
   </div>
 <% end %>

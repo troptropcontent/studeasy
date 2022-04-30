@@ -1,0 +1,9 @@
+<div class="tab flex justify-between">
+  <%= link_to "MY ASSESSMENTS", assessments_path , class: "text-2xl pl-2 pt-2 pb-1 rounded-tl-md f-primary bg-slate-300 text-white flex-auto" %>
+  <div class="w-11 rounded-tr-md flex justify-center">
+    <p class="m-auto">+</p>
+  </div>
+</div>
+<div class="content flex-auto flex px-2">
+  <%= render "assessments/shared/form",  assessment: @assessment %>
+</div>

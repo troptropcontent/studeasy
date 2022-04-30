@@ -5,11 +5,22 @@ class AssessmentsController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource
 
+  # simple PORO object that returns 'assessments/no_assessment' when receive #to_partial_path
+  class NoAssessmentObject
+    def to_partial_path
+      'assessments/no_assessment'
+    end
+  end
+
   # GET /assessments
   def index
     @assessment = Assessment.new
+    @assessments = no_assessments_object if @assessments.empty?
+    @tab = tab_params || 'main'
 
-    render "assessments/#{current_user.role}_index"
+    respond_to do |format|
+      format.html { render "assessments/#{current_user.role}_index" }
+    end
   end
 
   # GET /assessments/:id
@@ -22,7 +33,9 @@ class AssessmentsController < ApplicationController
   def create
     respond_to do |format|
       if @assessment.save
-        handle_assessment_creation(format)
+        @assessments = @current_user.assessments
+        @tab = 'main'
+        format.html { render "assessments/#{current_user.role}_index" }
       else
         handle_invalid_assessment_creation(format)
       end
@@ -57,5 +70,13 @@ class AssessmentsController < ApplicationController
       render turbo_stream: turbo_stream.replace(@assessment, partial: 'assessments/shared/form',
                                                              locals: { assessment: @assessment })
     end
+  end
+
+  def no_assessments_object
+    @no_assessments_object ||= NoAssessmentObject.new
+  end
+
+  def tab_params
+    params.permit(:tab)[:tab]
   end
 end

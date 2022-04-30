@@ -1,0 +1,17 @@
+<div class="tab flex justify-between">
+  <h1 class="text-2xl pl-2 pt-2 pb-1 flex-auto">MY ASSESSMENTS</h1>
+  <div class="bg-slate-300 w-11 rounded-tr-md flex justify-center">
+    <%= link_to "+", assessments_path(tab: "create"), class: "text-white my-auto" %>
+  </div>
+</div>
+<div class="content flex-auto">
+  <div class="headers px-2 pt-2 flex justify-between border-solid border-b-2 border-slate-300">
+    <h3>name</h3>
+    <h3 class="hidden sm:inline">deadline</h3>
+    <h3 class="hidden sm:inline"> status</h3>
+    <h3>actions</h3>
+  </div>
+  <%= turbo_frame_tag "assessments" do %>
+    <%= render @assessments %>
+  <% end %>
+</div>

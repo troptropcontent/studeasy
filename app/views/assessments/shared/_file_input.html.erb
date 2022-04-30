@@ -3,9 +3,9 @@
   <%= form.label :documents, class: "cursor-pointer" do %>
       <div class="flex justify-between">
         <p>Documents</p>
-        <%= inline_svg_tag "upload.svg" %>
+        <%= inline_svg_tag "upload.svg", size: "16", class: "my-auto" %>
       </div>
       <%= form.file_field :documents, :multiple => true, class: "hidden", data: {action: "input->file-input#handleFileInput"} %>
   <% end %>
-  <%= form.text_field :file_names, data:{"file-input-target"=>"files"}, disabled: true, class: "disabled:bg-slate-100" %>
+  <%= form.text_field :file_names, data:{"file-input-target"=>"files"}, disabled: true, class: "disabled:bg-slate-100 w-full" %>
 </div>

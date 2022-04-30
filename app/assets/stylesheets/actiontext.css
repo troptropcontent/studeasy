@@ -34,3 +34,8 @@
 span[data-trix-button-group='file-tools'] {
   display:none;
 }
+
+/* set overflow-x: overlay for the trix toolbar as it increase the heigh otherwise */
+trix-toolbar .trix-button-row {
+  overflow-x: overlay;
+}
