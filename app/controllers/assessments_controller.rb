@@ -4,6 +4,7 @@
 class AssessmentsController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource
+  layout :find_layout
 
   # simple PORO object that returns 'assessments/no_assessment' when receive #to_partial_path
   class NoAssessmentObject
@@ -78,5 +79,9 @@ class AssessmentsController < ApplicationController
 
   def tab_params
     params.permit(:tab)[:tab]
+  end
+
+  def find_layout
+    "application_#{current_user.role}"
   end
 end
