@@ -1,8 +1,10 @@
-<%= turbo_frame_tag dom_id(assessment), class: "flex justify-between px-2" do %>
-  <p class="my-auto"><%= assessment.name %></p>
-  <p class="my-auto hidden sm:inline"><%= assessment.deadline %></p>
-  <p class="my-auto hidden sm:inline"><%= assessment.status %></p>
-  <%= link_to assessment_path(assessment), data: { turbo_method: :delete } do %>
-    <%= inline_svg_tag "trash-2.svg", class: "w-4 h-4" %>
+<%= turbo_frame_tag dom_id(assessment), class: "flex justify-between p-2" do %>
+  <% columns.each do |column, css_class| %>
+    <p class="my-auto <%= css_class %>"><%= extract_data assessment, column %></p>
+  <% end %>
+  <% actions.each do |action, method| %>
+    <%= link_to assessment_path(assessment), data: { turbo_method: method } do %>
+      <%= inline_svg_tag "#{action}.svg", class: "w-4 h-4" %>
+    <% end %>
   <% end %>
 <% end %>
