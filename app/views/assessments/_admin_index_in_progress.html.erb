@@ -1,8 +1,8 @@
 <div class="tab flex justify-between">
-  <h1 class="text-2xl pl-2 flex-grow pt-2 pb-1">TO DO</h1>
-  <div class="bg-slate-200 flex-grow rounded-tr-md flex justify-center">
-    <%= link_to "IN PROGRESS", assessments_path(tab: "in_progress"), class: "text-white my-auto" %>
+  <div class="bg-slate-200 flex-grow rounded-tl-md flex justify-center">
+    <%= link_to "TO DO", assessments_path(tab: "main"), class: "text-white my-auto" %>
   </div>
+  <h1 class="text-2xl pl-2 flex-grow pt-2 pb-1">IN PROGRESS</h1>
   <div class="bg-slate-300 flex-grow rounded-tr-md flex justify-center">
     <%= link_to "PAST", assessments_path(tab: "past"), class: "text-white my-auto" %>
   </div>
@@ -16,6 +16,15 @@
     <h3>actions</h3>
   </div>
   <%= turbo_frame_tag "assessments" do %>
-    <%= render @assessments, view: :admin %>
+    <%= render @assessments,
+        columns: {
+          "name" => nil,
+          "user.email" => nil,
+          "deadline" => "hidden sm:inline",
+          "status" => "hidden sm:inline",
+          "actions" => nil,
+        },
+        actions: {edit: :get}
+    %>
   <% end %>
 </div>

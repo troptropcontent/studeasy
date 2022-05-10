@@ -15,6 +15,7 @@ AllCops:
     - '.git/**/*'
     - 'bin/*'
     - 'config/environments/**'
+    - 'db/schema.rb'
   TargetRubyVersion: 2.5
   SuggestExtensions: false
 
