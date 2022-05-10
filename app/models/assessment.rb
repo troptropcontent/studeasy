@@ -18,11 +18,19 @@ class Assessment < ApplicationRecord
                         ],
                         size: { between: (1.kilobyte)..(100.megabytes) }
 
-  def status
-    return 'waiting for quotation' unless quote.status == 'ready'
-    return 'assigned' if quote.service_provider
+  scope :to_do, lambda {
+                  left_joins(quote: { solution: :documents_attachments }).where(solution: { id: nil })
+                }
+  scope :in_progress, lambda {
+                        left_joins(quote: { solution: :documents_attachments })
+                          .where.not(solution: { id: nil }).where(documents_attachments: nil)
+                      }
+  scope :past, -> { joins(quote: { solution: :documents_attachments }) }
 
-    'quoted'
+  def status
+    return 'waiting_for_quotation' if quote.price.zero?
+
+    'waiting_for_paiment'
   end
 
   def quote
