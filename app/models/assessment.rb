@@ -30,7 +30,7 @@ class Assessment < ApplicationRecord
   def status
     return 'waiting_for_quotation' if quote.price.zero?
 
-    'waiting_for_paiment'
+    'waiting_for_payment'
   end
 
   def quote

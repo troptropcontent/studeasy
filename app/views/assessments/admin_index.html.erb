@@ -1,4 +1,3 @@
-<%= turbo_stream_from "assessments" %>
-<%= turbo_frame_tag "assessments_tabs", class: "flex-auto flex flex-col" do %>
+<div class="flex-auto flex flex-col">
   <%= render "assessments/admin_index_#{@tab}" %>
-<% end %>
+</div>

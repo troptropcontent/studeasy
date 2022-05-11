@@ -1,38 +1,36 @@
-<div class="flex flex-col">
-  <section class="bg-white p-4 mb-2 rounded-md flex flex-col">
+<div class="flex flex-col w-full justify-between">
+  <div class="tab flex justify-between">
+    <h1 class="text-2xl pl-2 flex-grow rounded-tl-md pt-2 pb-1"><%= @assessment.name %></h1>
+    <div class="bg-slate-300 w-11 rounded-tr-md flex justify-center">
+      <%= link_to "+", assessments_path(tab: "main"), class: "text-white my-auto rotate-45" %>
+    </div>
+  </div>
+  <section class="grow bg-white p-4 mb-2 rounded-md flex flex-col justify-between">
     <div class="flex justify-between mb-2">
-      <div>
-        <p><b>Assessment's name</b></p>
-        <p><%= @assessment.name %></p>
-      </div>
       <div>
         <p><b>Deadline</b></p>
         <p><%= @assessment.deadline %></p>
       </div>
-    </div>
-    <div class="flex justify-between mb-2">
       <div>
         <p class="mb-2"><b>Documents</b></p>
-        <% @assessment.documents.each do |document| %>
-          <%= link_to rails_blob_path(document, disposition: "attachment"), class: "m-auto flex" do %>
-            <%= inline_svg_tag "file-text.svg", class: "my-auto w-4 h-4" %>
-            <%= document.filename %>
+        <div class="flex">
+          <% @assessment.documents.each do |document| %>
+            <%= link_to rails_blob_path(document, disposition: "attachment"), class: "m-auto flex" do %>
+              <%= inline_svg_tag "file-text.svg", class: "my-auto w-4 h-4" %>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
     </div>
-    <div class="flex justify-between">
-      <div>
-        <p class="mb-2"><b>Special instructions</b></p>
+    <div class="grow w-full flex flex-col">
+      <p class="mb-2"><b>Special instructions</b></p>
+      <div class="description grow border-solid border-2 border-slate-600">
         <%= @assessment.description %>
       </div>
     </div>
   </section>
   <% if @admin_view %>
     <section class="bg-white p-4 mb-2 rounded-md flex flex-col">
-      <div class="flex flex-row-reverse">
-        <p>* this is an admin view, only admin user can see this</p>
-      </div>
       <%= render partial: "quotes/quote", locals: {assessment: @assessment} %>
     </section>
   <% end %>

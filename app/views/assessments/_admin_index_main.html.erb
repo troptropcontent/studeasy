@@ -15,16 +15,16 @@
     <h3 class="hidden sm:inline"> status</h3>
     <h3>actions</h3>
   </div>
-  <%= turbo_frame_tag "assessments" do %>
+  <div>
     <%= render @assessments,
-        columns: {
-          "name" => nil,
-          "user.email" => nil,
-          "deadline" => "hidden sm:inline",
-          "status" => "hidden sm:inline",
-          "actions" => nil,
-        },
-        actions: {edit: :get}
-    %>
-  <% end %>
+          columns: {
+            "name" => nil,
+            "user.email" => nil,
+            "deadline" => "hidden sm:inline",
+            "status" => "hidden sm:inline",
+            "actions" => nil,
+          },
+          actions: {edit: :get}
+      %>
+  </div>
 </div>

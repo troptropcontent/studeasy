@@ -1,5 +1,9 @@
-<%= form_with model: @quote, url: assessment_quote_path(@assessment), method: "put" do |form| %>
-  <%= form.label :price %>
-  <%= form.number_field :price %>
-  <%= form.submit %>
+<%= form_with model: @quote, url: assessment_quote_path(@assessment), method: "put", class: "flex justify-between" do |form| %>
+  <div class=" grow flex flex-col">
+        <%= form.label :price, class: "font-bold"%>
+        <div class="flex flex-col sm:flex-row justify-between">
+        <%= form.number_field :price, class: "grow"%>
+        <%= form.submit class: "sm:ml-2 bg-slate-200 p-2"%>
+        </div>
+  </div>
 <% end %>
