@@ -1,9 +1,9 @@
-  <div class="flex justify-between p-2">
+  <div class="grid grid-cols-5 gap-2 p-2">
     <% columns.each do |column, css_class| %>
-      <p class="my-auto <%= css_class %>"><%= extract_data assessment, column %></p>
+      <p class="my-auto overflow-hidden <%= css_class %>"><%= extract_data assessment, column %></p>
     <% end %>
     <% actions.each do |action, method| %>
-      <%= link_to assessment_path(assessment), data: { turbo_method: method } do %>
+      <%= link_to assessment_path(assessment), data: { turbo_method: method }, class: "overflow-hidden" do %>
         <%= inline_svg_tag "#{action}.svg", class: "w-4 h-4" %>
       <% end %>
     <% end %>
