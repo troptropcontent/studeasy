@@ -1,0 +1,20 @@
+<div class="tab flex justify-between">
+  <h1 class="text-2xl pl-2 pt-2 pb-1 flex-auto">Payment</h1>
+  <div class="bg-slate-300 w-11 rounded-tr-md flex justify-center">
+    <%= link_to "+", assessments_path(tab: "main"), class: "text-white my-auto rotate-45" %>
+  </div>
+</div>
+<div class="content flex-auto">
+  <h1>Checkout summary</h1>
+      <button id="pay" class="btn btn-primary">Pay</button>
+      <script src="https://js.stripe.com/v3/"></script>
+      <script>
+        const paymentButton = document.getElementById('pay');
+        paymentButton.addEventListener('click', () => {
+          const stripe = Stripe('<%= Rails.application.credentials.dig(:stripe, Rails.env.to_sym, :public_key) %>');
+          stripe.redirectToCheckout({
+            sessionId: '<%= @order.checkout_session_id %>'
+          });
+        });
+      </script>
+</div>

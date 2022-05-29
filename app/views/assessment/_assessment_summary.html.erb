@@ -1,0 +1,24 @@
+<section class="grow bg-white p-4 mb-2 rounded-md flex flex-col justify-between">
+    <div class="flex justify-between mb-2">
+      <div>
+        <p><b>Deadline</b></p>
+        <p><%= assessment.deadline %></p>
+      </div>
+      <div>
+        <p class="mb-2"><b>Documents</b></p>
+        <div class="flex">
+          <% assessment.documents.each do |document| %>
+            <%= link_to rails_blob_path(document, disposition: "attachment"), class: "m-auto flex" do %>
+              <%= inline_svg_tag "file-text.svg", class: "my-auto w-4 h-4" %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="grow w-full flex flex-col">
+      <p class="mb-2"><b>Special instructions</b></p>
+      <div class="description grow border-solid border-2 border-slate-600">
+        <%= assessment.description %>
+      </div>
+    </div>
+  </section>

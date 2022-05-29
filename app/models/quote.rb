@@ -4,6 +4,7 @@
 class Quote < ApplicationRecord
   belongs_to :assessment
   has_one :solution
+  has_one :order
 
   monetize :price_cents
 

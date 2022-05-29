@@ -7,5 +7,8 @@ Rails.application.routes.draw do
   resources :assessments, only: %i[index show create destroy] do
     resource :quote, only: :update
   end
+  resources :orders, only: %i[show create] do
+    resources :payments, only: :new
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 end

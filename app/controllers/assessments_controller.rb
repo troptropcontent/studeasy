@@ -27,7 +27,8 @@ class AssessmentsController < ApplicationController
   # GET /assessments/:id
   def show
     @quote = @assessment.quote
-    @admin_view = current_user.admin?
+    @view = current_user.role
+    render variants: current_user.role.to_sym
   end
 
   # POST /assessments
