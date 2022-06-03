@@ -1,6 +1,7 @@
-class OrdersController < ApplicationController
-  def show; end
+# frozen_string_literal: true
 
+# order for stripe
+class OrdersController < ApplicationController
   def create
     quote = Quote.find(order_params[:quote_id])
     @order = Order.create_with(amount: quote.price).find_or_create_by!(quote: quote)
@@ -27,18 +28,20 @@ class OrdersController < ApplicationController
   end
 
   def create_stripe_session(quote)
-    @session = Stripe::Checkout::Session.create(
-      payment_method_types: ['card'],
+    @session = Stripe::Checkout::Session.create(**stripe_session_attributes(quote))
+
+    @order.update!(checkout_session_id: @session.id, status: :pending)
+  end
+
+  def stripe_session_attributes(quote)
+    { payment_method_types: ['card'],
       line_items: [{
         name: quote.assessment.name,
         amount: quote.price_cents,
         currency: 'eur',
         quantity: 1
       }],
-      success_url: order_url(@order),
-      cancel_url: order_url(@order)
-    )
-
-    @order.update!(checkout_session_id: session.id)
+      success_url: assessment_url(@order.quote.assessment),
+      cancel_url: assessment_url(@order.quote.assessment) }
   end
 end

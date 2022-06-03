@@ -2,6 +2,8 @@
 
 Rails.application.routes.draw do
   devise_for :users
+  # stripe webhooks
+  mount StripeEvent::Engine, at: '/stripe/webhooks'
   # Defines the root path route ("/")
   root 'assessments#index'
   resources :assessments, only: %i[index show create destroy] do

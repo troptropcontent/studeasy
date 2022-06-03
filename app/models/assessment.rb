@@ -29,8 +29,9 @@ class Assessment < ApplicationRecord
 
   def status
     return 'waiting_for_quotation' if quote.price.zero?
+    return 'waiting_for_payment' if quote.order.nil? || !quote.order.paid?
 
-    'waiting_for_payment'
+    'paid'
   end
 
   def quote

@@ -61,6 +61,7 @@ gem 'sassc-rails'
 
 # Use stripe for payments
 gem 'stripe'
+gem 'stripe_event'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem 'image_processing', '~> 1.2'
