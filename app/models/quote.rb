@@ -17,4 +17,8 @@ class Quote < ApplicationRecord
 
     'not_started'
   end
+
+  def buddy_price
+    Money.from_cents(price_cents / 3, 'AUD')
+  end
 end

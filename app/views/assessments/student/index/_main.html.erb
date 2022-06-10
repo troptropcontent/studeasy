@@ -5,11 +5,12 @@
   </div>
 </div>
 <div class="content flex-auto">
-  <div class="headers px-2 pt-2 flex justify-between border-solid border-b-2 border-slate-300">
-    <h3>name</h3>
-    <h3 class="hidden sm:inline">deadline</h3>
-    <h3 class="hidden sm:inline"> status</h3>
-    <h3>actions</h3>
+  <div class="headers px-2 pt-2 grid grid-cols-2 sm:grid-cols-5 border-solid border-b-2 border-slate-300">
+    <h3 class="text-center">name</h3>
+    <h3 class="text-center hidden sm:inline">deadline</h3>
+    <h3 class="text-center hidden sm:inline">status</h3>
+    <h3 class="text-center hidden sm:inline">price</h3>
+    <h3 class="text-center">actions</h3>
   </div>
   <div>
     <%= render @assessments,
@@ -19,7 +20,7 @@
           "status" => "hidden sm:inline",
           "quote.price" => "hidden sm:inline",
         },
-        actions: true
+        custom_class: "grid-cols-2 sm:grid-cols-5"
     %>
   </div>
 </div>

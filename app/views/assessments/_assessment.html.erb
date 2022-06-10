@@ -1,6 +1,6 @@
-  <div class="grid grid-cols-5 gap-2 p-2">
-    <% columns.each do |column, css_class| %>
-      <p class="my-auto overflow-hidden <%= css_class %>"><%= extract_data assessment, column %></p>
+  <div class="grid <%= custom_class %> gap-2 p-2">
+    <% columns.each_with_index do |(column, css_class), i| %>
+      <p class="my-auto break-words <%= css_class %> <%= "text-center" if i > 0 %>"><%= extract_data assessment, column %></p>
     <% end %>
-    <%= link_to "see details", assessment_path(assessment) %>
+    <%= link_to "see details", assessment_path(assessment), class: "my-auto text-right" %>
   </div>

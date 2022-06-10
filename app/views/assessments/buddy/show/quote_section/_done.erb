@@ -1,0 +1,10 @@
+<div class="flex flex-col">
+    <p>Your assessment is done. Please find the final work below</p>
+    <div class="flex">
+        <% assessment.documents.each do |document| %>
+        <%= link_to rails_blob_path(document, disposition: "attachment"), class: "m-auto flex" do %>
+            <%= inline_svg_tag "file-text.svg", class: "my-auto w-4 h-4" %>
+        <% end %>
+        <% end %>
+    </div>
+</div>

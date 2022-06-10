@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'assessments#index'
   resources :assessments, only: %i[index show create destroy] do
-    resource :quote, only: :update
+    resource :quote, only: :update do
+      resource :solution, only: %i[create update]
+    end
   end
   resources :orders, only: %i[show create] do
     resources :payments, only: :new

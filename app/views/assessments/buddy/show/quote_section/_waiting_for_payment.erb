@@ -1,0 +1,8 @@
+<div class="flex flex-col">
+    <p>We estimated the following cost for this work :</p>
+    <p><%= assessment.quote.price %></p>
+</div>
+<%= form_with url: orders_path do |form| %>
+    <%= form.hidden_field "order[quote_id]", value: assessment.quote.id %>
+    <%= form.submit "Pay", data: { turbo: false } %>
+<% end %>

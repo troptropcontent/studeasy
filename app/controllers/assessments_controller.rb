@@ -16,8 +16,8 @@ class AssessmentsController < ApplicationController
   # GET /assessments
   def index
     @assessment = Assessment.new
-    @assessments = no_assessments_object if @assessments.empty?
     @tab = tab_params || 'main'
+    @assessments = determine_assessments
 
     respond_to do |format|
       format.html { render "assessments/#{current_user.role}_index" }
@@ -36,8 +36,10 @@ class AssessmentsController < ApplicationController
     respond_to do |format|
       if @assessment.save
         @assessments = @current_user.assessments
+        @assessment.quote
         @tab = 'main'
         format.html { render "assessments/#{current_user.role}_index" }
+        format.turbo_stream { redirect_to root_path }
       else
         handle_invalid_assessment_creation(format)
       end
@@ -84,5 +86,12 @@ class AssessmentsController < ApplicationController
 
   def find_layout
     "application_#{current_user.role}"
+  end
+
+  def determine_assessments
+    return no_assessments_object if @assessments.empty?
+    return @assessments if current_user.student?
+
+    AssessmentsSelector.new(@assessments, current_user, @tab).call
   end
 end

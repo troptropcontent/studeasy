@@ -8,23 +8,22 @@
   <h1 class="text-2xl pl-2 flex-grow rounded-tr-md pt-2 pb-1">PAST</h1>
 </div>
 <div class="content flex-auto">
-  <div class="headers px-2 pt-2 flex justify-between border-solid border-b-2 border-slate-300">
+  <div class="headers px-2 pt-2 grid grid-cols-3 sm:grid-cols-5  border-solid border-b-2 border-slate-300">
     <h3>name</h3>
-    <h3>user</h3>
-    <h3 class="hidden sm:inline">deadline</h3>
-    <h3 class="hidden sm:inline"> status</h3>
-    <h3>actions</h3>
+    <h3 class="text-center">user</h3>
+    <h3 class="text-center hidden sm:inline">deadline</h3>
+    <h3 class="text-center hidden sm:inline"> status</h3>
+    <h3 class="text-right">actions</h3>
   </div>
-  <%= turbo_frame_tag "assessments" do %>
+  <div>
     <%= render @assessments,
         columns: {
           "name" => nil,
           "user.email" => nil,
           "deadline" => "hidden sm:inline",
           "status" => "hidden sm:inline",
-          "actions" => nil,
         },
-        actions: {edit: :get}
+        custom_class: "grid-cols-3 sm:grid-cols-5"
     %>
-  <% end %>
+  </div>
 </div>

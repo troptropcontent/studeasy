@@ -1,0 +1,8 @@
+<div class="flex flex-col">
+    <%= turbo_frame_tag @assessment.quote.solution do %>
+        <%= form_with model: @assessment.quote.solution, url: assessment_quote_solution_path(@assessment), method: :put  do |form| %>
+            <%= form.file_field :documents %>
+            <%= form.submit "Upload solutions" %>
+        <% end %>
+    <% end %>
+</div>

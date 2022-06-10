@@ -1,0 +1,12 @@
+<div class="flex flex-col w-full justify-between">
+  <div class="tab flex justify-between">
+    <h1 class="text-2xl pl-2 flex-grow rounded-tl-md pt-2 pb-1"><%= @assessment.name %></h1>
+    <div class="bg-slate-300 w-11 rounded-tr-md flex justify-center">
+      <%= link_to "+", assessments_path(tab: "main"), class: "text-white my-auto rotate-45" %>
+    </div>
+  </div>
+  <%= render partial: "assessment/assessment_summary", locals: {assessment: @assessment} %>
+  <section class="bg-white p-4 mb-2 rounded-md flex justify-between">
+    <%= render partial: "assessments/buddy/show/quote_section/#{@assessment.status}", locals: {assessment: @assessment} %>
+  </section>
+</div>
