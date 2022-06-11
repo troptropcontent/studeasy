@@ -3,8 +3,8 @@
 # the Quote holds the price of the assessment and will be the base for stripe checkouts
 class Quote < ApplicationRecord
   belongs_to :assessment
-  has_one :solution
-  has_one :order
+  has_one :solution, dependent: :destroy
+  has_one :order, dependent: :destroy
 
   monetize :price_cents
 

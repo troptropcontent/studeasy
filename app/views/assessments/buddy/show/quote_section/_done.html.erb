@@ -1,7 +1,7 @@
-<div class="flex flex-col">
-    <p>Your assessment is finished.</p>
+<div class="flex flex-col w-full">
+    <p>Thank you very much. We'll let the student know and will proceed to payment as soon as possible.</p>
     <div class="flex">
-        <p>Solutions uploaded : </p>
+        <p>Final work uploaded : </p>
         <div class="flex pl-2">
             <% assessment.solution.documents.each do |document| %>
                 <%= link_to rails_blob_path(document, disposition: "attachment"), class: "my-auto mx-2 flex" do %>

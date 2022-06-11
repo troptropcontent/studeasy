@@ -1,0 +1,12 @@
+<%= turbo_frame_tag dom_id(@assessment.solution), class: 'w-full' do %>
+    <div class="flex flex-col" data-controller="file-input">
+        <%= form_with model: @assessment.solution, url: assessment_quote_solution_path(@assessment), method: :put, class: "flex flex-col justify-between rounded-lg border-solid border-2 border-slate-600"  do |form| %>
+                <%= form.label :documents, "Upload final work", class: "text-center bg-slate-300 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded-t-lg" %>
+                <%= form.file_field :documents, multiple: true, hidden: true, data: {action: "input->file-input#handleFileInput"} %>
+                <div class='text-center flex-grow flex flex-col justify-center px-2'>
+                    <p data-file-input-target="files">No file uploaded yet</p>
+                </div>
+                <%= form.submit "Upload solutions", class: "bg-slate-300 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded-b-lg focus:outline-none focus:shadow-outline" %>
+        <% end %>
+    </div>
+<% end %>

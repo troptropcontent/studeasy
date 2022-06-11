@@ -5,7 +5,7 @@ class Assessment < ApplicationRecord
   belongs_to :user
   has_many_attached :documents
   has_one :quote, dependent: :destroy
-  has_one :solution, through: :quote, dependent: :destroy
+  has_one :solution, through: :quote
   has_rich_text :description
 
   validates :deadline, presence: true
@@ -36,7 +36,9 @@ class Assessment < ApplicationRecord
         LEFT JOIN quotes ON quotes.assessment_id = assessments.id
         LEFT JOIN orders ON orders.quote_id = quotes.id
         LEFT JOIN solutions ON solutions.quote_id = quotes.id
-        LEFT JOIN active_storage_attachments as solution_attachements ON solution_attachements.record_type = 'Solution' AND solution_attachements.name = 'documents' AND solution_attachements.record_id = solutions.id
+        LEFT JOIN active_storage_attachments as solution_attachements ON solution_attachements.record_type = 'Solution'
+        AND solution_attachements.name = 'documents'
+        AND solution_attachements.record_id = solutions.id
       ) as statuses ON statuses.assessment_id = assessments.id"
       )
       .distinct
