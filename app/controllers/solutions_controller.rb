@@ -16,8 +16,8 @@ class SolutionsController < ApplicationController
   end
 
   def update
-    @solution = @assessment.solution
     @assessment = Assessment.find(params[:assessment_id])
+    @solution = @assessment.solution
     return unless @solution.update(document_params) && @solution.documents.attached?
 
     respond_to do |format|
