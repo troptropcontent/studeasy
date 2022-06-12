@@ -35,11 +35,7 @@ class AssessmentsController < ApplicationController
   def create
     respond_to do |format|
       if @assessment.save
-        @assessments = @current_user.assessments
-        @assessment.quote
-        @tab = 'main'
-        format.html { render "assessments/#{current_user.role}_index" }
-        format.turbo_stream { redirect_to root_path }
+        handle_assessment_creation(format)
       else
         handle_invalid_assessment_creation(format)
       end
@@ -64,9 +60,12 @@ class AssessmentsController < ApplicationController
   end
 
   def handle_assessment_creation(format)
+    @assessments = current_user.assessments
+    @assessment.quote
+    @tab = 'main'
     AssessmentMailer.with(assessment: @assessment).new_assessment_email.deliver_later
-    @new_assessment = Assessment.new
-    format.turbo_stream
+    format.html { render "assessments/#{current_user.role}_index" }
+    format.turbo_stream { redirect_to root_path }
   end
 
   def handle_invalid_assessment_creation(format)
