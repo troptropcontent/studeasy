@@ -69,6 +69,9 @@ gem 'image_processing', '~> 1.2'
 # active storage validation
 gem 'active_storage_validations'
 
+# svg
+gem 'inline_svg'
+
 group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
@@ -80,9 +83,6 @@ group :development, :test do
   gem 'rubocop-performance', '~> 1.13', '>= 1.13.3'
   gem 'rubocop-rspec', '~> 2.9'
   gem 'rubocop-rake', '~> 0.6.0'
-
-  # svg
-  gem 'inline_svg'
 end
 
 group :test do
