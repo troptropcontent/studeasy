@@ -1,0 +1,13 @@
+
+<%= turbo_frame_tag "user_email_authorisations"  do %>
+  <ul class="m-2">
+    <% @user_email_authorisations.each do |user_email_authorisation| %>
+      <li class="flex">
+        <%= user_email_authorisation.email %>
+        <%= link_to user_email_authorisation_path(user_email_authorisation), data: { turbo_method: :delete }, class: "px-2 my-auto" do %>
+            <%= inline_svg_tag "delete.svg", class: "w-4 h-4" %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

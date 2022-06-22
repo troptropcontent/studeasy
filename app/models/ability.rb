@@ -32,6 +32,7 @@ class Ability
     if user.admin?
       can %i[read create destroy], Assessment
       can [:update], Quote
+      can %i[index create destroy], UserEmailAuthorisation
     elsif user.buddy?
       can [:read], Assessment
     else

@@ -3,8 +3,11 @@
   <div class="bg-slate-200 flex-grow flex justify-center">
     <%= link_to "IN PROGRESS", assessments_path(tab: "in_progress"), class: "text-white my-auto" %>
   </div>
-  <div class="bg-slate-300 flex-grow rounded-tr-md flex justify-center">
+  <div class="bg-slate-300 flex-grow flex justify-center">
     <%= link_to "PAST", assessments_path(tab: "past"), class: "text-white my-auto" %>
+  </div>
+  <div class="bg-slate-400 flex-grow rounded-tr-md flex justify-center">
+    <%= link_to "Settings", assessments_path(tab: "settings"), class: "text-white my-auto" %>
   </div>
 </div>
 <div class="content flex-auto">

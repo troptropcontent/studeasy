@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       resource :solution, only: %i[create update]
     end
   end
+  resources :user_email_authorisations, only: %i[index create destroy]
   resources :orders, only: %i[show create] do
     resources :payments, only: :new
   end

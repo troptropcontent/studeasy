@@ -90,6 +90,7 @@ class AssessmentsController < ApplicationController
   def determine_assessments
     return no_assessments_object if @assessments.empty?
     return @assessments if current_user.student?
+    return no_assessments_object if @tab == 'settings'
 
     AssessmentsSelector.new(@assessments, current_user, @tab).call
   end

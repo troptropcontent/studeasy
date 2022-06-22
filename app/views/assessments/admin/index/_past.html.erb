@@ -5,7 +5,10 @@
   <div class="bg-slate-300 flex-grow flex justify-center">
     <%= link_to "IN PROGRESS", assessments_path(tab: "in_progress"), class: "text-white my-auto" %>
   </div>
-  <h1 class="text-2xl pl-2 flex-grow rounded-tr-md pt-2 pb-1">PAST</h1>
+  <h1 class="text-2xl pl-2 flex-grow pt-2 pb-1">PAST</h1>
+  <div class="bg-slate-400 flex-grow rounded-tr-md flex justify-center">
+    <%= link_to "Settings", assessments_path(tab: "settings"), class: "text-white my-auto" %>
+  </div>
 </div>
 <div class="content flex-auto">
   <div class="headers px-2 pt-2 grid grid-cols-3 sm:grid-cols-5  border-solid border-b-2 border-slate-300">

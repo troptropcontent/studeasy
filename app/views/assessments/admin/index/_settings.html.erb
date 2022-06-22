@@ -1,0 +1,28 @@
+<div class="tab flex justify-between">
+  <div class="bg-slate-200 flex-grow rounded-tl-md flex justify-center">
+    <%= link_to "TO DO", assessments_path(tab: "main"), class: "text-white my-auto" %>
+  </div>
+  <div class="bg-slate-300 flex-grow flex justify-center">
+    <%= link_to "IN PROGRESS", assessments_path(tab: "in_progress"), class: "text-white my-auto" %>
+  </div>
+  <div class="bg-slate-400 flex-grow flex justify-center">
+    <%= link_to "PAST", assessments_path(tab: "past"), class: "text-white my-auto" %>
+  </div>
+  <h1 class="text-2xl pl-2 flex-grow pt-2 pb-1">Settings</h1>
+</div>
+<div class="content flex-auto p-2">
+  <%= form_for :user_email_authorisation, url: user_email_authorisations_path, method: :post, class: "m-2" do |form| %>
+    <div class="w-full flex">
+      <%= form.text_field :email , class: "flex-grow rounded-l-lg", placeholder: "Add a new email address to the authorized teachers" %>
+      <%= form.hidden_field "role", value: 'buddy' %>
+      <%= form.submit "Add", class: "pl-2 bg-slate-300 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded-r-lg focus:outline-none focus:shadow-outline" %>
+    </div>
+  <% end %>
+
+<%= turbo_frame_tag "user_email_authorisations", src: user_email_authorisations_path do %>
+  <div class="m-2 flex justify-center">
+    <%= image_tag "spinner.gif", class: "h-8" %>
+  </div>
+<% end %>
+
+</div>
